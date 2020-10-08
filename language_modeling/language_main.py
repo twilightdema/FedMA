@@ -30,8 +30,13 @@ BATCH_SIZE = 50
 TRAIN_DATA_DIR = "./datum/leaf/data/shakespeare/data/train/"
 TEST_DATA_DIR = "./datum/leaf/data/shakespeare/data/test/"
 
-TRAIN_DATA_NAME = "all_data_niid_0_keep_10000_train_9.json"
-TEST_DATA_NAME = "all_data_niid_0_keep_10000_test_9.json"
+TRAIN_DATA_NAME = "all_data_niid_0_keep_9_train_9.json"
+TEST_DATA_NAME = "all_data_niid_0_keep_9_test_9.json"
+
+# create file handler which logs even debug messages
+fh = logging.FileHandler('language_main.log')
+fh.setLevel(logging.DEBUG)
+logger.addHandler(fh)
 
 #TRIAL_USER_NAME = ["THE_FIRST_PART_OF_KING_HENRY_THE_FOURTH_HOT", "KING_RICHARD_THE_SECOND_KING_RICHARD"]
 
