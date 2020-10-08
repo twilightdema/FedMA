@@ -24,14 +24,18 @@ logging.basicConfig()
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
+# create file handler which logs even debug messages
+fh = logging.FileHandler('lstm_fedma_with_comm.log')
+fh.setLevel(logging.DEBUG)
+logger.addHandler(fh)
 
 BATCH_SIZE = 50
 TRAIN_DATA_DIR = "./datum/leaf/data/shakespeare/data/train/"
 TEST_DATA_DIR = "./datum/leaf/data/shakespeare/data/test/"
 
 # all_data_niid_0_keep_10000_train_9.json
-TRAIN_DATA_NAME = "all_data_niid_0_keep_10000_train_9.json"
-TEST_DATA_NAME = "all_data_niid_0_keep_10000_test_9.json"
+TRAIN_DATA_NAME = "all_data_niid_0_keep_9_test_9.json"
+TEST_DATA_NAME = "all_data_niid_0_keep_9_test_9.json"
 
 TRIAL_EPOCH=10
 
@@ -278,11 +282,11 @@ if __name__ == "__main__":
     for cr in range(communication_rounds):
         logger.info("Start to work on communication round-{}".format(cr))
 
-        with open("lstm_matching_assignments", "rb") as assignment_file:
+        with open("lstm_with_comm_matching_assignments", "rb") as assignment_file:
             assignments_list = pickle.load(assignment_file)
-        with open("lstm_matching_shapes", "rb") as ms_file:
+        with open("lstm_with_comm_matching_shapes", "rb") as ms_file:
             matching_shapes = pickle.load(ms_file)
-        with open("matched_global_weights", "rb") as matched_weight_file:
+        with open("with_comm_matched_global_weights", "rb") as matched_weight_file:
             global_matched_model = pickle.load(matched_weight_file)
 
 
@@ -513,9 +517,9 @@ if __name__ == "__main__":
         logger.info('| Matched model on Global Testset | valid loss {:5.2f} | pred: {}/{} | acc: {:.4f}%'.format(total_val_loss, global_correct_prediction, global_num_samples_test, global_correct_prediction/global_num_samples_test*100.0))
         logger.info('*' * 89)
 
-        with open("lstm_matching_assignments", "wb") as assignment_file:
+        with open("lstm_with_comm_matching_assignments", "wb") as assignment_file:
             pickle.dump(assignments_list, assignment_file)
-        with open("lstm_matching_shapes", "wb") as ms_file:
+        with open("lstm_with_comm_matching_shapes", "wb") as ms_file:
             pickle.dump(matching_shapes, ms_file)
-        with open("matched_global_weights", "wb") as matched_weight_file:
+        with open("with_comm_matched_global_weights", "wb") as matched_weight_file:
             pickle.dump(global_matched_model, matched_weight_file)
