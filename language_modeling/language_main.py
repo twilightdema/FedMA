@@ -30,8 +30,8 @@ BATCH_SIZE = 50
 TRAIN_DATA_DIR = "./datum/leaf/data/shakespeare/data/train/"
 TEST_DATA_DIR = "./datum/leaf/data/shakespeare/data/test/"
 
-TRAIN_DATA_NAME = "all_data_niid_0_keep_9_train_9.json"
-TEST_DATA_NAME = "all_data_niid_0_keep_9_test_9.json"
+TRAIN_DATA_NAME = "all_data_niid_0_keep_10000_train_9.json"
+TEST_DATA_NAME = "all_data_niid_0_keep_10000_test_9.json"
 
 # create file handler which logs even debug messages
 fh = logging.FileHandler('language_main.log')
@@ -57,7 +57,7 @@ def add_fit_args(parser):
     # Training settings
     parser.add_argument('--mode', type=str, default='fedavg', metavar='N',
                         help='mode of the experiment to run')
-    parser.add_argument('--comm-round', type=int, default=20, metavar='N',
+    parser.add_argument('--comm-round', type=int, default=30, metavar='N',
                         help='number of communication round')
     args = parser.parse_args()
     return args

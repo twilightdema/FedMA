@@ -34,8 +34,8 @@ TRAIN_DATA_DIR = "./datum/leaf/data/shakespeare/data/train/"
 TEST_DATA_DIR = "./datum/leaf/data/shakespeare/data/test/"
 
 # all_data_niid_0_keep_10000_train_9.json
-TRAIN_DATA_NAME = "all_data_niid_0_keep_9_train_9.json"
-TEST_DATA_NAME = "all_data_niid_0_keep_9_test_9.json"
+TRAIN_DATA_NAME = "all_data_niid_0_keep_10000_train_9.json"
+TEST_DATA_NAME = "all_data_niid_0_keep_10000_test_9.json"
 
 TRIAL_EPOCH=10
 
